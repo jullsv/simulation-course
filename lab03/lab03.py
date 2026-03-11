@@ -21,7 +21,7 @@ DEATH_PROB = 0.002
 DEATH_DEATH_PROB = 0.001
 
 WIND_DIRECTION = np.random.randint(0, 360)
-WIND_STRENGTH = 0.7
+WIND_STRENGTH = 0.5
 HUMIDITY = 0.5
 
 
@@ -70,14 +70,15 @@ wind_arrow = ax.quiver(
     zorder=10,
 )
 
-ax_humidity = plt.axes([0.25, 0.02, 0.50, 0.04])
+ax_humidity = plt.axes([0.25, 0.02, 0.50, 0.03])
+ax_wind = plt.axes([0.25, 0.07, 0.50, 0.03])
 
 humidity_slider = Slider(
-    ax=ax_humidity,
-    label="Влажность",
-    valmin=0.0,
-    valmax=1.0,
-    valinit=0.5,
+    ax=ax_humidity, label="Влажность", valmin=0.0, valmax=1.0, valinit=0.5
+)
+
+wind_slider = Slider(
+    ax=ax_wind, label="Сила ветра", valmin=0.0, valmax=1.0, valinit=0.5, color="gray"
 )
 
 
@@ -86,7 +87,13 @@ def update_humidity(val):
     HUMIDITY = val
 
 
+def update_wind(val):
+    global WIND_STRENGTH
+    WIND_STRENGTH = val
+
+
 humidity_slider.on_changed(update_humidity)
+wind_slider.on_changed(update_wind)
 
 
 def on_click(event):
@@ -221,5 +228,5 @@ def update(frame):
     return [img, wind_arrow]
 
 
-ani = animation.FuncAnimation(fig, update, interval=10, blit=True)
+ani = animation.FuncAnimation(fig, update, interval=150, blit=True)
 plt.show()
