@@ -170,8 +170,8 @@ def iterate(current_grid):
 
                     wind_mod = wind(-dy, -dx, WIND_DIRECTION, WIND_STRENGTH)
                     humidity_prob = 1.0 - HUMIDITY
-                    final_prob = base_prob * wind_mod
-                    final_prob = min(1.0, max(0.0, final_prob * humidity_prob))
+                    final_prob_ = base_prob * wind_mod
+                    final_prob = min(1.0, max(0.0, final_prob_ * humidity_prob))
 
                     if (
                         current_grid[y + dy, x + dx] == FIRE
