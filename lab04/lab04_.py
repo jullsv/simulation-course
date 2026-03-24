@@ -3,12 +3,12 @@ import random
 
 class BasicGenerator:
     def __init__(self, betta, m, seed):
-        self.a = betta
+        self.betta = betta
         self.m = m
         self.x = seed
 
     def rand(self):
-        self.x = (self.a * self.x) % self.m
+        self.x = (self.betta * self.x) % self.m
         return self.x / self.m
 
     def generate(self, n):
@@ -32,7 +32,7 @@ def calculate(numbers):
 
 
 def main():
-    a = 16807
+    betta = 16807
     m = 2**32
     seed = 1
 
@@ -41,12 +41,12 @@ def main():
     theor_mean = 0.5
     theor_var = 1.0 / 12.0
 
-    # ===Базовый минимум===
-    generator = BasicGenerator(a, m, seed)
+    # --- Базовый минимум ---
+    generator = BasicGenerator(betta, m, seed)
     numbers = generator.generate(N)
     mean, var = calculate(numbers)
 
-    # ===Встроенный генератор===
+    # --- Встроенный генератор ---
     numbers_ = []
 
     for i in range(N):
@@ -62,20 +62,20 @@ def main():
 
     # --- Вывод ---
     print("Базовый датчик")
-    print("Среднее:", f"{mean:.6f}", "(diff = {:+.6e})".format(diff_mean))
-    print("Дисперсия:", f"{var:.6f}", "(diff = {:+.6e})".format(diff_var))
+    print(f"Среднее: {mean:.6f} (diff = {diff_mean:+.6e})")
+    print(f"Дисперсия: {var:.6f} (diff = {diff_var:+.6e})")
 
     print()
 
     print("Встроенный генератор")
-    print("Среднее:", f"{mean_:.6f}", "(diff = {:+.6e})".format(diff_mean_))
-    print("Дисперсия:", f"{var_:.6f}", "(diff = {:+.6e})".format(diff_var_))
+    print(f"Среднее: {mean_:.6f} (diff = {diff_mean_:+.6e})")
+    print(f"Дисперсия: {var_:.6f} (diff = {diff_var_:+.6e})")
 
     print()
 
     print("Теоретические значения")
-    print("Среднее:", f"{theor_mean:.6f}")
-    print("Дисперсия:", f"{theor_var:.6f}")
+    print(f"Среднее: {theor_mean:.6f}")
+    print(f"Дисперсия: {theor_var:.6f}")
 
 
 if __name__ == "__main__":
