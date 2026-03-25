@@ -33,7 +33,6 @@ def main():
     seed = b
 
     N = 100_000
-
     t_mean = 0.5
     t_var = 1.0 / 12.0
 
@@ -46,26 +45,28 @@ def main():
         numbers_.append(random.random())
 
     mean_, var_ = count(numbers_)
-
     diff_mean = mean - t_mean
     diff_var = var - t_var
-
+    
     diff_mean_ = mean_ - t_mean
     diff_var_ = var_ - t_var
 
     print("Базовый датчик")
+    print()
     print(f"Среднее: {mean:.6f} (diff = {diff_mean:+.6e})")
     print(f"Дисперсия: {var:.6f} (diff = {diff_var:+.6e})")
 
     print()
 
     print("Встроенный датчик")
+    print()
     print(f"Среднее: {mean_:.6f} (diff = {diff_mean_:+.6e})")
     print(f"Дисперсия: {var_:.6f} (diff = {diff_var_:+.6e})")
 
     print()
 
     print("Теоретические значения")
+    print()
     print(f"Среднее: {t_mean:.6f}")
     print(f"Дисперсия: {t_var:.6f}")
 
