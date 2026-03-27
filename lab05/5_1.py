@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+import time
 
 class BaseGenerator:
     def __init__(self, b, m, seed):
@@ -21,7 +22,10 @@ class App:
         self.m = 2**63
         self.seed = self.b
         self.generator = BaseGenerator(self.b, self.m, self.seed)
-        
+
+        for _ in range(100):
+            self.generator.rand()
+
         self.create_widgets()
     
     def create_widgets(self):
