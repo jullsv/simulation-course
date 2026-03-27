@@ -46,7 +46,7 @@ class MagicApp:
     def create_widgets(self):
         title_label = tk.Label(
             self.root,
-            text="🎱 ШАР ПРЕДСКАЗАНИЙ 🎱",
+            text=" ШАР ПРЕДСКАЗАНИЙ ",
             font=("Arial", 20, "bold"),
             pady=10
         )
