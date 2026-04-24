@@ -116,7 +116,7 @@ $$P(x_{left} < X < x_{right}) = F(x_{right}) - F(x_{left})$$
 
 ## GUI
 
-<img width="1518" height="1845" alt="image" src="https://github.com/user-attachments/assets/5f5eb35b-3b98-4f51-a737-7349f5427d89" />
+<img width="1489" height="1826" alt="image" src="https://github.com/user-attachments/assets/305f0f7d-901e-43ab-8ce9-8d8fb8c89ae0" />
 
 *Рисунок 2 - GUI для ДСВ*
 
