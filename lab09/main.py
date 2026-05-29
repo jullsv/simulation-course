@@ -13,23 +13,16 @@ def main():
         
         res = system.simulate(T=T_val)
 
-        print(f"\nСтатистика заявок:")
+        print(f"Параметры: lambda={lambda_val}, mu={mu_val}")
+        print(f"Время моделирования: {T_val}")
+
+        print(f"\nЗаявки:")
         print(f"  Поступило:   {res['arrived']}")
         print(f"  Обслужено:   {res['served']}")
         print(f"  Потеряно:    {res['lost']}")
         
-        print(f"\nВероятности:")
-        print(f"  Эмпирическая вероятность отказа: {res['loss_prob_empirical']:.6f}")
-        
-    
-        rho = res['rho']
-        theoretical_loss = rho / (1 + rho)
-        print(f"  Теоретическая вероятность отказа: {theoretical_loss:.6f}")
-
-        print(f"\nРаспределение времени состояний (P_k):")
-        for k in sorted(res['distribution'].keys()):
-            prob = res['distribution'][k]
-            print(f"  P{k} (клиентов в системе: {k}): {prob:.6f}")
+        print(f"  Вероятность отказа: {res['loss_prob']:.6f}")
+        print(f"  Вероятность принятия: {res['accept_prob']:.6f}")
 
     except ValueError as e:
         print(f"Ошибка ввода: {e}")
