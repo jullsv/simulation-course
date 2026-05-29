@@ -71,14 +71,12 @@ class MM1System:
         for state in state_time:
             distribution[state] = state_time[state] / T
 
-        rho = self.lambda_ / self.mu
-
         results = {
             "distribution": distribution,
             "arrived": arrived_count,
             "served": served_count,
             "lost": lost_count,
-            "loss_prob_empirical": lost_count / arrived_count if arrived_count > 0 else 0,
-            "rho": rho
+            "loss_prob": lost_count / arrived_count if arrived_count > 0 else 0,
+            "accept_prob": served_count / arrived_count if arrived_count > 0 else 0
         }
         return results
